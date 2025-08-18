@@ -4,6 +4,7 @@ import { compress } from "@thaparoyal/image-compression";
 import { Download, FileImage, ImageIcon, Settings, Upload, Zap } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
+import { ThemeToggle } from "../src/app/components/ThemeToggle";
 
 interface CompressionOptions {
   maxSizeMB: number;
@@ -130,15 +131,16 @@ export default function Home() {
   return (
      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="relative bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-800">
+        <ThemeToggle />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg">
+            <div className="p-2 bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-700 dark:to-indigo-900 rounded-lg">
               <Zap className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Image Compressor</h1>
-              <p className="text-sm text-gray-600">Compress images with advanced options, entirely in your browser</p>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Image Compressor</h1>
+              <p className="text-sm text-gray-600 dark:text-gray-300">Compress images with advanced options, entirely in your browser</p>
             </div>
           </div>
         </div>
@@ -200,10 +202,10 @@ export default function Home() {
 
               {originalFile && originalPreview && (
                 <div className="mt-4">
-                  <Image
+                  <img
                     src={originalPreview}
                     alt="Original preview"
-                    className="w-full h-48 object-cover rounded-lg border"
+                    className="w-full h-48 object-cover rounded-lg border border-gray-200 dark:border-gray-800"
                   />
                 </div>
               )}
@@ -390,19 +392,19 @@ export default function Home() {
                 {/* Preview Comparison */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">Original</h3>
-                    <Image
+                    <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Original</h3>
+                    <img
                       src={originalPreview}
                       alt="Original"
-                      className="w-full h-64 object-cover rounded-lg border"
+                      className="w-full h-64 object-cover rounded-lg border border-gray-200 dark:border-gray-800"
                     />
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">Compressed</h3>
-                    <Image
+                    <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Compressed</h3>
+                    <img
                       src={compressedPreview}
                       alt="Compressed"
-                      className="w-full h-64 object-cover rounded-lg border"
+                      className="w-full h-64 object-cover rounded-lg border border-gray-200 dark:border-gray-800"
                     />
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "../src/app/components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +24,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Compress images online with advanced options. Fast, secure, and free!" />
+        <meta name="keywords" content="image compression, online, webp, jpeg, png, avif, resize, optimize, free" />
+        <meta name="theme-color" content="#3b82f6" />
+        <meta property="og:title" content="Image Compression Tool" />
+        <meta property="og:description" content="Compress images online with advanced options. Fast, secure, and free!" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/next.svg" />
+        <meta property="og:url" content="https://image-compressor-online.vercel.app/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Image Compression Tool" />
+        <meta name="twitter:description" content="Compress images online with advanced options. Fast, secure, and free!" />
+        <meta name="twitter:image" content="/next.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <title>Image Compression Tool</title>
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`min-h-screen bg-background text-foreground transition-colors duration-300 ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
