@@ -101,6 +101,8 @@ export default function Home() {
         progressive: options.progressive,
       };
 
+      console.log('compressionOptions',compressionOptions)
+
       const compressed = await compress(originalFile, compressionOptions);
       setCompressedFile(compressed);
       setCompressedPreview(createPreviewUrl(compressed));
@@ -240,7 +242,7 @@ export default function Home() {
                     >
                       <option value="webp">WebP</option>
                       <option value="jpeg">JPEG</option>
-                      <option value="png">PNG</option>
+                      {/* <option value="png">PNG</option> */}
                       <option value="avif">AVIF</option>
                     </select>
                   </div>
