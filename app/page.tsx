@@ -9,7 +9,7 @@ import { ThemeToggle } from "../src/app/components/ThemeToggle";
 interface CompressionOptions {
   maxSizeMB: number;
   format: 'webp' | 'jpeg' | 'png' | 'avif';
-  resize: 'contain' | 'cover' | 'fill' | 'inside' | 'outside';
+  resizeMode: 'contain' | 'cover' | 'fill' | 'inside' | 'outside';
   maxWidth: number;
   maxHeight: number;
   quality: number;
@@ -28,7 +28,7 @@ export default function Home() {
   const [options, setOptions] = useState<CompressionOptions>({
     maxSizeMB: 1,
     format: 'webp',
-    resize: 'contain',
+    resizeMode: 'contain',
     maxWidth: 1920,
     maxHeight: 1080,
     quality: 0.8,
@@ -93,8 +93,8 @@ export default function Home() {
     try {
       const compressionOptions = {
         maxSizeMB: options.maxSizeMB,
-        format: options.format,
-        resize: options.resize,
+        preferredFormat: options.format,
+        resizeMode: options.resizeMode,
         maxWidth: options.maxWidth,
         maxHeight: options.maxHeight,
         quality: options.quality,
@@ -248,8 +248,8 @@ export default function Home() {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Resize Mode</label>
                     <select
-                      value={options.resize}
-                      onChange={(e) => setOptions({ ...options, resize: e.target.value as CompressionOptions['resize'] })}
+                      value={options.resizeMode}
+                      onChange={(e) => setOptions({ ...options, resizeMode: e.target.value as CompressionOptions['resizeMode'] })}
                       className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                       <option value="contain">Contain</option>
